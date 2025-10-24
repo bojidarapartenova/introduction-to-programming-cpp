@@ -21,7 +21,7 @@ int main()
         if (number > n)
         {
             std::cout << "Invalid number";
-            break;
+            return 0;
         }
 
         secondSum += number;
