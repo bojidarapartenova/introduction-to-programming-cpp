@@ -1,6 +1,6 @@
 #include <iostream>
 
-bool isSuffix(int n, int k)
+bool isInfix(int n, int k)
 {
     int temp = k;
     int digits = 0;
@@ -10,17 +10,17 @@ bool isSuffix(int n, int k)
         digits++;
         temp /= 10;
     }
-
     int divisitor = pow(10, digits);
 
-    if (n % divisitor == k)
+    while (n >= k)
     {
-        return true;
+        if (n % divisitor == k)
+        {
+            return true;
+        }
+        n /= 10;
     }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 
 int main()
@@ -28,5 +28,5 @@ int main()
     int n, k;
     std::cin >> n >> k;
 
-    std::cout << isSuffix(n, k);
+    std::cout << isInfix(n, k);
 }
