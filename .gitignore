@@ -21,6 +21,7 @@
 .DS_Store
 Thumbs.db
 
-# Ignore compiled executables with numeric names (no extension)
-[0-9]*
+# Ignore compiled executables with numeric names anywhere
+**/[0-9]*
+
 
