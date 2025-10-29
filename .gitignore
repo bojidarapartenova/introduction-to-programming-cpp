@@ -21,8 +21,5 @@
 .DS_Store
 Thumbs.db
 
-# Ignore all executables without extension
-*
-!.cpp
-!.h
-
+# Ignore compiled executables (files without extension)
+task*
