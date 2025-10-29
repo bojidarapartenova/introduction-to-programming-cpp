@@ -20,3 +20,9 @@
 # ===== OS files =====
 .DS_Store
 Thumbs.db
+
+# Ignore all executables without extension
+*
+!.cpp
+!.h
+
