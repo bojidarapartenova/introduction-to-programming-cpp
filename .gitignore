@@ -1,0 +1,22 @@
+# ===== VS Code =====
+.vscode/
+
+# ===== Build files =====
+*.o
+*.obj
+*.exe
+*.out
+*.app
+/build/
+/Debug/
+/Release/
+
+# ===== Backup and temporary files =====
+*.log
+*.tmp
+*.bak
+*~
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
