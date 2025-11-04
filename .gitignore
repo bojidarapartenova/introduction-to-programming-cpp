@@ -21,12 +21,7 @@
 .DS_Store
 Thumbs.db
 
-# Ignore numeric files anywhere
+# Ignore compiled executables with numeric names anywhere
 **/[0-9]*
 
-# But allow numbered folders
-!01. Introduction/
-!02. Conditional Statements/
-!03. Loops/
-!04. Functions/
-!05. Arrays/
+
