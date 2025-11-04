@@ -21,7 +21,5 @@
 .DS_Store
 Thumbs.db
 
-# Ignore compiled executables with numeric names anywhere
-**/[0-9]*
-
-
+# Ignore compiled executables with numeric names in build folders only
+/build/**/[0-9]*
