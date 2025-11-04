@@ -21,5 +21,12 @@
 .DS_Store
 Thumbs.db
 
-# Ignore numeric build files only (not your source files)
-build/**/*[0-9]*
+# Ignore numeric files anywhere
+**/[0-9]*
+
+# But allow numbered folders
+!01. Introduction/
+!02. Conditional Statements/
+!03. Loops/
+!04. Functions/
+!05. Arrays/
