@@ -20,3 +20,13 @@
 # ===== OS files =====
 .DS_Store
 Thumbs.db
+
+# ===== Track only .cpp files and folders =====
+# Ignore everything
+*
+
+# But do not ignore directories
+!*/
+
+# Track only .cpp files
+!*.cpp
