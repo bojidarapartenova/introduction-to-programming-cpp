@@ -49,6 +49,46 @@ void printIntersection(int n, int arr1[], int m, int arr2[], int result[])
     printArray(resultPos, result);
 }
 
+void printUnion(int n, int arr1[], int m, int arr2[], int result[])
+{
+    int resultPos = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        bool isAdded = false;
+        for (int j = 0; j < resultPos; j++)
+        {
+            if (result[j] == arr1[i])
+            {
+                isAdded = true;
+                break;
+            }
+        }
+        if (!isAdded)
+        {
+            result[resultPos++] = arr1[i];
+        }
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        bool isAdded = false;
+        for (int j = 0; j < resultPos; j++)
+        {
+            if (result[j] == arr2[i])
+            {
+                isAdded = true;
+                break;
+            }
+        }
+        if (!isAdded)
+        {
+            result[resultPos++] = arr2[i];
+        }
+    }
+    printArray(resultPos, result);
+}
+
 int main()
 {
     int n;
@@ -71,5 +111,10 @@ int main()
 
     int result[100];
 
+    std::cout << "Intersection: ";
     printIntersection(n, arr1, m, arr2, result);
+
+    std::cout << std::endl
+              << "Union: ";
+    printUnion(n, arr1, m, arr2, result);
 }
