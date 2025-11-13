@@ -70,6 +70,23 @@ void printZigZagMatrix(int matrix[ROWS][COLS])
     }
 }
 
+bool isMatrixTriangle(int matrix[ROWS][COLS])
+{
+    bool result = true;
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLS; j++)
+        {
+            if (i > j)
+            {
+                if (matrix[i][j] != 0)
+                    result = false;
+            }
+        }
+    }
+    return result;
+}
+
 int main()
 {
     int matrix[ROWS][COLS];
@@ -84,5 +101,6 @@ int main()
 
     // std::cout << smallestInMatrix(matrix);
     // printDiagonals(matrix);
-    printZigZagMatrix(matrix);
+    // printZigZagMatrix(matrix);
+    // std::cout << isMatrixTriangle(matrix);
 }
