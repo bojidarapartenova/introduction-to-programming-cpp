@@ -52,12 +52,21 @@ void printZigZagMatrix(int matrix[ROWS][COLS])
 {
     for (int i = 0; i < ROWS; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        if (i % 2 == 0)
         {
-            if (j % 2 != 0)
+            for (int j = 0; j < COLS; j++)
             {
+                std::cout << matrix[i][j] << " ";
             }
         }
+        else
+        {
+            for (int j = COLS - 1; j >= 0; j--)
+            {
+                std::cout << matrix[i][j] << " ";
+            }
+        }
+        std::cout << std::endl;
     }
 }
 
@@ -75,4 +84,5 @@ int main()
 
     // std::cout << smallestInMatrix(matrix);
     // printDiagonals(matrix);
+    printZigZagMatrix(matrix);
 }
