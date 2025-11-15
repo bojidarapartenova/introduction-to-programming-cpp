@@ -1,6 +1,7 @@
 #include <iostream>
 const int ROWS = 2;
 const int COLS = 3;
+const int MAX_SIZE = 100;
 
 void printMatrix(int matrix[ROWS][COLS])
 {
@@ -203,17 +204,67 @@ void multiplyMatrixBy(int matrix[ROWS][COLS], int num)
     printMatrix(matrix);
 }
 
-int main()
+void multiplyMatrix(int matrix1[MAX_SIZE][MAX_SIZE], int matrix2[MAX_SIZE][MAX_SIZE])
 {
-    int matrix[ROWS][COLS];
+    int n, m, p;
+    std::cin >> n >> m >> p;
 
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
-            std::cin >> matrix[i][j];
+            std::cin >> matrix1[i][j];
         }
     }
+
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < p; j++)
+        {
+            std::cin >> matrix2[i][j];
+        }
+    }
+
+    int result[n][p];
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < p; j++)
+        {
+            result[i][j] = 0;
+            for (int k = 0; k < m; k++)
+            {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < p; j++)
+        {
+            std::cout << result[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void printSpiral(int matrix[ROWS][COLS])
+{
+    
+}
+
+int main()
+{
+    // int matrix[ROWS][COLS];
+
+    // for (int i = 0; i < ROWS; i++)
+    // {
+    //     for (int j = 0; j < COLS; j++)
+    //     {
+    //         std::cin >> matrix[i][j];
+    //     }
+    // }
 
     // std::cout << smallestInMatrix(matrix);
     // printDiagonals(matrix);
@@ -235,4 +286,8 @@ int main()
     // int num;
     // std::cin >> num;
     // multiplyMatrixBy(matrix, num);
+
+    // int matrix1[MAX_SIZE][MAX_SIZE];
+    // int matriz2[MAX_SIZE][MAX_SIZE];
+    // multiplyMatrix(matrix1, matriz2);
 }
