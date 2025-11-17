@@ -331,5 +331,5 @@ int main()
     // multiplyMatrix(matrix, matrix2, n, m, p);
 
     // printSpiral(matrix, n, m);
-    rotateMatrixToRight(matrix, n, m);
+    // rotateMatrixToRight(matrix, n, m);
 }
