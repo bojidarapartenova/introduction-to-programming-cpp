@@ -1,13 +1,11 @@
 #include <iostream>
-const int ROWS = 2;
-const int COLS = 3;
-const int MAX_SIZE = 100;
+const int MAX = 100;
 
-void printMatrix(int matrix[ROWS][COLS])
+void printMatrix(int matrix[][MAX], int n, int m)
 {
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
             std::cout << matrix[i][j] << " ";
         }
@@ -15,13 +13,13 @@ void printMatrix(int matrix[ROWS][COLS])
     }
 }
 
-int smallestInMatrix(int matrix[ROWS][COLS])
+int smallestInMatrix(int matrix[][MAX], int n, int m)
 {
-    int smallest = matrix[1][1];
+    int smallest = matrix[0][0];
 
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
             if (matrix[i][j] < smallest)
             {
@@ -32,12 +30,12 @@ int smallestInMatrix(int matrix[ROWS][COLS])
     return smallest;
 }
 
-void printDiagonals(int matrix[ROWS][COLS])
+void printDiagonals(int matrix[][MAX], int n, int m)
 {
     std::cout << "Main diagonal: ";
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
             if (i == j)
             {
@@ -49,11 +47,11 @@ void printDiagonals(int matrix[ROWS][COLS])
     std::cout << std::endl;
 
     std::cout << "Secondary diagonal: ";
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
-            if ((i + j) == (ROWS - 1))
+            if ((i + j) == (n - 1))
             {
                 std::cout << matrix[i][j] << " ";
             }
@@ -61,20 +59,20 @@ void printDiagonals(int matrix[ROWS][COLS])
     }
 }
 
-void printZigZagMatrix(int matrix[ROWS][COLS])
+void printZigZagMatrix(int matrix[][MAX], int n, int m)
 {
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
         if (i % 2 == 0)
         {
-            for (int j = 0; j < COLS; j++)
+            for (int j = 0; j < m; j++)
             {
                 std::cout << matrix[i][j] << " ";
             }
         }
         else
         {
-            for (int j = COLS - 1; j >= 0; j--)
+            for (int j = m - 1; j >= 0; j--)
             {
                 std::cout << matrix[i][j] << " ";
             }
@@ -83,12 +81,12 @@ void printZigZagMatrix(int matrix[ROWS][COLS])
     }
 }
 
-bool isMatrixTriangle(int matrix[ROWS][COLS])
+bool isMatrixTriangle(int matrix[][MAX], int n, int m)
 {
     bool result = true;
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
             if (i > j)
             {
@@ -100,34 +98,34 @@ bool isMatrixTriangle(int matrix[ROWS][COLS])
     return result;
 }
 
-void transposeMatrix(int matrix[ROWS][COLS])
+void transposeMatrix(int matrix[][MAX], int n, int m)
 {
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < COLS; j++)
+        for (int j = i + 1; j < m; j++)
         {
             int temp = matrix[i][j];
             matrix[i][j] = matrix[j][i];
             matrix[j][i] = temp;
         }
     }
-    printMatrix(matrix);
+    printMatrix(matrix, n, m);
 }
 
-bool isMatrixMagic(int matrix[ROWS][COLS])
+bool isMatrixMagic(int matrix[][MAX], int n, int m)
 {
     int sum = 0;
 
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
         sum += matrix[0][i];
     }
 
     // rows
-    for (int i = 1; i < ROWS; i++)
+    for (int i = 1; i < n; i++)
     {
         int rowSum = 0;
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
             rowSum += matrix[i][j];
         }
@@ -139,10 +137,10 @@ bool isMatrixMagic(int matrix[ROWS][COLS])
     }
 
     // columns
-    for (int i = 0; i < COLS; i++)
+    for (int i = 0; i < m; i++)
     {
         int colSum = 0;
-        for (int j = 0; j < ROWS; j++)
+        for (int j = 0; j < n; j++)
         {
             colSum += matrix[j][i];
         }
@@ -155,7 +153,7 @@ bool isMatrixMagic(int matrix[ROWS][COLS])
 
     // primary diagonal
     int primaryDiagonalSum = 0;
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
         primaryDiagonalSum += matrix[i][i];
     }
@@ -167,9 +165,9 @@ bool isMatrixMagic(int matrix[ROWS][COLS])
 
     // secondary diagonal
     int secondaryDiagonalSum = 0;
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        secondaryDiagonalSum += matrix[i][ROWS - 1 - i];
+        secondaryDiagonalSum += matrix[i][n - 1 - i];
     }
     if (secondaryDiagonalSum != sum)
     {
@@ -178,54 +176,35 @@ bool isMatrixMagic(int matrix[ROWS][COLS])
     return true;
 }
 
-void sumMatrix(int matrix1[ROWS][COLS], int matrix2[ROWS][COLS])
+void sumMatrix(int matrix1[][MAX], int matrix2[][MAX], int n, int m)
 {
-    int sum[ROWS][COLS];
-    for (int i = 0; i < ROWS; i++)
+    int sum[MAX][MAX];
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < m; j++)
         {
             sum[i][j] = matrix1[i][j] + matrix2[i][j];
         }
     }
 
-    printMatrix(sum);
+    printMatrix(sum, n, m);
 }
 
-void multiplyMatrixBy(int matrix[ROWS][COLS], int num)
+void multiplyMatrixBy(int matrix[][MAX], int n, int m, int num)
 {
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLS; j++)
-        {
-            matrix[i][j] *= num;
-        }
-    }
-    printMatrix(matrix);
-}
-
-void multiplyMatrix(int matrix1[MAX_SIZE][MAX_SIZE], int matrix2[MAX_SIZE][MAX_SIZE])
-{
-    int n, m, p;
-    std::cin >> n >> m >> p;
-
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
-            std::cin >> matrix1[i][j];
+            matrix[i][j] *= num;
         }
     }
+    printMatrix(matrix, n, m);
+}
 
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < p; j++)
-        {
-            std::cin >> matrix2[i][j];
-        }
-    }
-
-    int result[n][p];
+void multiplyMatrix(int matrix1[][MAX], int matrix2[][MAX], int n, int m, int p)
+{
+    int result[MAX][MAX];
 
     for (int i = 0; i < n; i++)
     {
@@ -239,55 +218,118 @@ void multiplyMatrix(int matrix1[MAX_SIZE][MAX_SIZE], int matrix2[MAX_SIZE][MAX_S
         }
     }
 
-    for (int i = 0; i < n; i++)
+    printMatrix(result, n, p);
+}
+
+void printSpiral(int matrix[][MAX], int n, int m)
+{
+    int top = 0;
+    int bottom = n - 1;
+    int left = 0;
+    int right = n - 1;
+
+    while (top <= bottom && left <= right)
     {
-        for (int j = 0; j < p; j++)
+        for (int i = left; i <= right; i++)
         {
-            std::cout << result[i][j] << " ";
+            std::cout << matrix[top][i] << " ";
+        }
+        top++;
+
+        for (int i = top; i <= bottom; i++)
+        {
+            std::cout << matrix[i][right] << " ";
+        }
+        right--;
+
+        if (top <= bottom)
+        {
+            for (int i = right; i >= left; i--)
+            {
+                std::cout << matrix[bottom][i] << " ";
+            }
+            bottom--;
+        }
+
+        if (left <= right)
+        {
+            for (int i = bottom; i >= top; i--)
+            {
+                std::cout << matrix[i][left] << " ";
+            }
+            left++;
+        }
+    }
+}
+
+void rotateMatrixToRight(int matrix[][MAX], int n, int m)
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = n - 1; j >= 0; j--)
+        {
+            std::cout << matrix[j][i] << " ";
         }
         std::cout << std::endl;
     }
 }
 
-void printSpiral(int matrix[ROWS][COLS])
-{
-    
-}
-
 int main()
 {
-    // int matrix[ROWS][COLS];
+    int n, m;
 
-    // for (int i = 0; i < ROWS; i++)
+    std::cout << "Enter number of rows and columns: ";
+    std::cin >> n >> m;
+
+    int matrix[MAX][MAX];
+
+    std::cout << "Enter matrix elements: " << std::endl;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            std::cin >> matrix[i][j];
+        }
+    }
+
+    // std::cout << smallestInMatrix(matrix, n, m);
+    // printDiagonals(matrix, n, m);
+    // printZigZagMatrix(matrix, n, m);
+    // std::cout << isMatrixTriangle(matrix, n, m);
+    // transposeMatrix(matrix, n, m);
+    //(isMatrixMagic(matrix, n, m)) ? std::cout << "yes" : std::cout << "no";
+
+    // int matrix2[MAX][MAX];
+    // for (int i = 0; i < n; i++)
     // {
-    //     for (int j = 0; j < COLS; j++)
-    //     {
-    //         std::cin >> matrix[i][j];
-    //     }
-    // }
-
-    // std::cout << smallestInMatrix(matrix);
-    // printDiagonals(matrix);
-    // printZigZagMatrix(matrix);
-    // std::cout << isMatrixTriangle(matrix);
-    // transposeMatrix(matrix);
-    //(isMatrixMagic(matrix)) ? std::cout << "yes" : std::cout << "no";
-
-    // int matrix2[ROWS][COLS];
-    // for (int i = 0; i < ROWS; i++)
-    // {
-    //     for (int j = 0; j < COLS; j++)
+    //     for (int j = 0; j < m; j++)
     //     {
     //         std::cin >> matrix2[i][j];
     //     }
     // }
-    // sumMatrix(matrix, matrix2);
+    // sumMatrix(matrix, matrix2, n, m);
 
     // int num;
     // std::cin >> num;
-    // multiplyMatrixBy(matrix, num);
+    // multiplyMatrixBy(matrix, n, m, num);
 
-    // int matrix1[MAX_SIZE][MAX_SIZE];
-    // int matriz2[MAX_SIZE][MAX_SIZE];
-    // multiplyMatrix(matrix1, matriz2);
+    // int matrix2[MAX][MAX];
+
+    // int p;
+    // std::cout << "Enter number of columns of second matrix: ";
+    // std::cin >> p;
+
+    // std::cout << "Enter second matrix elements: " << std::endl;
+    // for (int i = 0; i < m; i++)
+    // {
+    //     for (int j = 0; j < p; j++)
+    //     {
+    //         std::cin >> matrix2[i][j];
+    //     }
+    // }
+    // multiplyMatrix(matrix, matrix2, n, m, p);
+
+    // printSpiral(matrix, n, m);
+    rotateMatrixToRight(matrix, n, m);
 }
