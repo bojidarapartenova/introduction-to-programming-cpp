@@ -2,17 +2,27 @@
 
 bool isEven(int number)
 {
-    // 3
-    // 0000000011 - 3
-    // 0000000001 - 1
-    return ~(number & 1);
+    return !(number & 1);
 }
 
 int twoPowerK(int k)
 {
-    // 000000001 - 1 k=0
-    // 000001000 - 8 k=3
     return 1 << k;
+}
+
+int deleteBit(int number, int bitPos)
+{
+    return number & ~(1 << bitPos);
+}
+
+int setBit(int number, int bitPos)
+{
+    return number | (1 << bitPos);
+}
+
+int getBit(int number, int bitPos)
+{
+    return 1 & (number >> bitPos);
 }
 
 int main()
@@ -20,5 +30,12 @@ int main()
     int number;
     std::cin >> number;
 
-    std::cout << isEven(number);
+    // std::cout << isEven(number);
+    // std::cout << twoPowerK(number);
+
+    int bitPos;
+    std::cin >> bitPos;
+    // std::cout << deleteBit(number, bitPos);
+    // std::cout << setBit(number, bitPos);
+    std::cout << getBit(number, bitPos);
 }
