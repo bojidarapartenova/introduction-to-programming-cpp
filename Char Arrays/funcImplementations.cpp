@@ -139,9 +139,9 @@ int main()
     // std::cout << atoi(charArr);
 
     // 6
-    char word[MAX_SIZE];
-    std::cin.getline(word, MAX_SIZE, '\n');
-    std::cout << searchInText(charArr, word);
+    // char word[MAX_SIZE];
+    // std::cin.getline(word, MAX_SIZE, '\n');
+    // std::cout << searchInText(charArr, word);
 
     // 7
     // char ch;
